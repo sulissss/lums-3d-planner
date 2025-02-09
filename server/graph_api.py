@@ -4,7 +4,7 @@ from azure.identity import ClientSecretCredential
 from dotenv import load_dotenv
 import os
 
-load_dotenv('configurations/config.env')
+load_dotenv('server/configurations/config.env')
 
 class Graph:
     def __init__(self, config):
@@ -84,8 +84,9 @@ async def main():
     # print(config)
 
     graph = Graph(config)
-    # print(await graph.get_app_only_token())
-    # print(await graph.set_user_id_by_email("26100350@lums.edu.pk"))
+    print(await graph.get_app_only_token())
+    print("---------------------------")
+    print(await graph.set_user_id_by_email("26100350@lums.edu.pk"))
     # emails = await graph.get_emails()  # or await graph.get_emails(specific_user_id) if you want a different user
 
     # if emails:

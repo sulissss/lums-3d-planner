@@ -1,2 +1,2 @@
-server/.venv
-server/configurations/config.env
+.venv
+server/configurations
