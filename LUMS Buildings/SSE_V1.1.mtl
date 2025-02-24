@@ -1,0 +1,33 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl buildings-colormap(Clone)
+Kd 1 1 1
+map_Kd Textures/buildings-colormap(Clone).png
+
+newmtl metalLight(Clone)
+Kd 0.698 0.686 0.867
+
+newmtl glass(Clone)
+Kd 0.262 0.662 0.779
+
+newmtl stone(Clone)
+Kd 0.571 0.559 0.736
+
+newmtl stoneDark(Clone)
+Kd 0.403 0.39 0.594
+
+newmtl stoneLight(Clone)
+Kd 0.71 0.701 0.84
+
+newmtl _defaultMat(Clone)
+Kd 0.797 0.806 0.834
+
+newmtl bricks(Clone)
+Kd 1 0.392 0.306
+
+newmtl bricksDark(Clone)
+Kd 0.878 0.271 0.271
+
+newmtl metalPurple(Clone)
+Kd 0.498 0.404 0.933
+
