@@ -86,7 +86,6 @@ async function deleteDocument(req, res, collectionName) {
   }
 }
 
-// CRUD routes for all collections
 ['locations', 'eateries', 'events', 'offices', 'users'].forEach(collection => {
   app.get(`/${collection}`, (req, res) => fetchCollection(req, res, collection));
   app.post(`/${collection}`, (req, res) => createDocument(req, res, collection));
@@ -95,4 +94,4 @@ async function deleteDocument(req, res, collectionName) {
   app.delete(`/${collection}/:id`, (req, res) => deleteDocument(req, res, collection));
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT);
