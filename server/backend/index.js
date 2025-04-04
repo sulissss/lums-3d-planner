@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 
 const PORT = process.env.PORT || 10000;
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://LUMScape:diddyparty16!@lumscape.md59v.mongodb.net";
 
 const client = new MongoClient(MONGO_URI, {
   useNewUrlParser: true,
