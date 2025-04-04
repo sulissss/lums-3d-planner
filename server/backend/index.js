@@ -1,10 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
+
 const PORT = process.env.PORT || 10000;
-const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://LUMScape:diddyparty16!@lumscape.md59v.mongodb.net";
+const MONGO_URI = process.env.MONGO_URI;
 
 const client = new MongoClient(MONGO_URI, {
   useNewUrlParser: true,
