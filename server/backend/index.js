@@ -28,7 +28,6 @@ async function connectToDb() {
 
 app.use(express.json());
 
-// Generic function to handle CRUD operations
 async function fetchCollection(req, res, collectionName) {
   await connectToDb();
   try {
@@ -86,12 +85,51 @@ async function deleteDocument(req, res, collectionName) {
   }
 }
 
+// CRUD routes for all collections
 ['locations', 'eateries', 'events', 'offices', 'users'].forEach(collection => {
   app.get(`/${collection}`, (req, res) => fetchCollection(req, res, collection));
   app.post(`/${collection}`, (req, res) => createDocument(req, res, collection));
   app.get(`/${collection}/:id`, (req, res) => getDocumentById(req, res, collection));
   app.put(`/${collection}/:id`, (req, res) => updateDocument(req, res, collection));
   app.delete(`/${collection}/:id`, (req, res) => deleteDocument(req, res, collection));
+});
+
+// Signup route
+app.post('/users/signup', async (req, res) => {
+  await connectToDb();
+  try {
+    const { email, password, scope } = req.body;
+    const encryptedPassword = sha256(password);
+
+    // Check if email already exists
+    const existingUser = await db.collection('users').findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email already exists." });
+    }
+
+    const result = await db.collection('users').insertOne({ email, password: encryptedPassword, scope });
+    res.status(201).json({ message: "User created", id: result.insertedId });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Login route
+app.post('/users/login', async (req, res) => {
+  await connectToDb();
+  try {
+    const { email, password } = req.body;
+    const encryptedPassword = sha256(password);
+
+    const user = await db.collection('users').findOne({ email });
+    if (user && user.password === encryptedPassword) {
+      res.json({ success: true, message: "Login successful" });
+    } else {
+      res.status(401).json({ success: false, message: "Invalid credentials" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 app.listen(PORT);
