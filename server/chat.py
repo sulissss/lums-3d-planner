@@ -32,6 +32,7 @@ model = genai.GenerativeModel(
       '''
 )
 
+
 history = []  # Initialize history *outside* the loop
 all_extracted_data = []  # List to store data from all emails
 
