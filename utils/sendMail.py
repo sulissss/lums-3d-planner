@@ -122,10 +122,9 @@ def main():
     """
     Main function to orchestrate the email fetching and data sending process.
     """
+    email_limit = 5
     account_name = os.getenv('OUTLOOK_ACCOUNT')
     api_endpoint = f"{os.getenv('BACKEND_API')}/emails"
-    email_limit = 5
-
     # Instantiate the classes
     email_fetcher = OutlookEmailFetcher(account_name)
     api_communicator = APICommunicator(api_endpoint)
