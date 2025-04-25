@@ -11,6 +11,7 @@ import officeRoutes from './routes/officeRoutes.js';
 import emailRoutes from './routes/emailRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -25,6 +26,7 @@ app.use('/eateries', eateryRoutes);
 app.use('/offices', officeRoutes);
 app.use('/auth', authRoutes);
 app.use('/emails', emailRoutes);
+
 
 app.listen(PORT);
 

@@ -1,7 +1,6 @@
 import express from 'express';
 import crypto from 'crypto';
 import getDb from '../utils/db.js';
-import * as userController from '../controllers/userController.js';
 const router = express.Router();
 
 // Signup
@@ -31,7 +30,7 @@ router.post('/login', async (req, res) => {
     if (user && user.password === encryptedPassword) {
       res.json({ success: true, message: 'Login successful' });
     } else {
-      res.status(401).json({ success: false, message: 'Invalid credentials' });
+      res.json({ success: false, message: 'Invalid credentials' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
