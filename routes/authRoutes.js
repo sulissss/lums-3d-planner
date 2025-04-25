@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
     if (user && user.password === encryptedPassword) {
       res.json({ success: true, message: 'Login successful' });
     } else {
-      res.json({ success: false, message: 'Invalid credentials' });
+      res.status(401).json({ success: false, message: 'Invalid credentials' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
