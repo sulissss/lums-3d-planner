@@ -14,20 +14,19 @@ export default async function processEmail(emailContent) {
     }
 
     const locationMap = {
-        'Academic Block / Mushtaq Ahmad Gurmani School of Humanities and Social Sciences (MGSHSS) / LUMS Learning Institute (LLI)': 1,
+        'Syed Babar Ali School of Science and Engineering (SBASSE)': 1,
         'Suleman Dawood School of Business (SDSB)': 2,
-        'Syed Babar Ali School of Science and Engineering (SBASSE)': 3,
+        'Syed Ahsan Ali and Syed Maratib Ali School of Education / The Gad and Birgit Rausing Library / Information Systems and Technology (IST) Lab': 3,
         'Shaikh Ahmad Hassan School of Law (SAHSOL)': 4,
-        'Syed Ahsan Ali and Syed Maratib Ali School of Education': 5,
-        'Yusuf H. Shirazi Complex': 6,
-        'The Gad and Birgit Rausing Library / Information Systems and Technology (IST) Lab': 7,
-        'Hostels': 8,
-        'Syed Maratab Ali Sports Complex': 9,
+        'Academic Block / Mushtaq Ahmad Gurmani School of Humanities and Social Sciences (MGSHSS) / LUMS Learning Institute (LLI)': 5,
+        'Pepsi Dining Centre (PDC)': 6,
+        'Community Mosque': 7,
+        'Syed Maratab Ali Sports Complex': 8,
+        'Khoka': 9,
         'Coca-Cola Aquatic Centre': 10,
-        'Pepsi Dining Centre (PDC)': 11,
-        'Community Mosque': 12,
-        'Khoka': 13,
-        'Rausing Executive Development Centre (REDC)': 14
+        'Rausing Executive Development Centre (REDC)': 11,
+        'Male Hostels / M1 / M2 / M3 / M4 / M5 / M6 / M7': 12,
+        'Female Hostels / F1 / F2 / F3 / F4 / F5 / F6': 13
       }
 
     const lums_locations = JSON.stringify(Object.keys(locationMap))
