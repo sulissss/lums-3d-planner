@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
     const encryptedPassword = crypto.createHash('sha256').update(password).digest('hex');
     const user = await db.collection('users').findOne({ email });
     if (user && user.password === encryptedPassword) {
-      res.json({ success: true, message: 'Login successful' });
+      res.json({ success: true, message: `${user.scope}` });
     } else {
       res.json({ success: false, message: 'Invalid credentials' });
     }
