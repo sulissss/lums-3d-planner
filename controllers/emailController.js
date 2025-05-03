@@ -39,3 +39,15 @@ export async function processEmails(req, res) {
     res.status(500).json({ error: `Failed to process emails: ${error.message}` });
   }
 };
+
+
+export async function getAllEvents(req, res) {
+    try {
+        const db = await getDb();
+        const eventsCollection = db.collection('events');
+        const events = await eventsCollection.find().toArray();
+        res.status(200).json(events);
+    } catch (error) {
+        res.status(500).json({ error: `Failed to fetch events` });
+    }
+} 

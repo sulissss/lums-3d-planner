@@ -9,7 +9,7 @@ async function connectToDb() {
   const MONGO_URI = process.env.MONGO_URI;
   const client = new MongoClient(MONGO_URI, { useUnifiedTopology: true });
   await client.connect();
-  db = client.db('LUMScapeDB');
+  db = client.db(process.env.DB_NAME);
   return db;
 }
 
