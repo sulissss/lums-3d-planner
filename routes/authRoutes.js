@@ -15,9 +15,10 @@ router.post('/signup', async (req, res) => {
     const result = await db.collection('users').insertOne({ email, password: encryptedPassword, scope });
     res.status(201).json({ message: 'User created', id: result.insertedId });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: 'Server error: ' + error.message });
   }
 });
+
 
 router.post('/login', async (req, res) => {
   try {
@@ -28,7 +29,7 @@ router.post('/login', async (req, res) => {
     if (user && user.password === encryptedPassword) {
       res.json({ success: true, message: `${user.scope}` });
     } else {
-      res.json({ success: false, message: 'Invalid credentials' });
+      res.status(401).json({ error: 'Invalid credentials' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
