@@ -3,10 +3,9 @@ import crypto from 'crypto';
 import getDb from '../utils/db.js';
 const router = express.Router();
 
-// Signup
 router.post('/signup', async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     const { email, password, scope } = req.body;
     const encryptedPassword = crypto.createHash('sha256').update(password).digest('hex');
     const existingUser = await db.collection('users').findOne({ email });
@@ -20,10 +19,9 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// Login
 router.post('/login', async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     const { email, password } = req.body;
     const encryptedPassword = crypto.createHash('sha256').update(password).digest('hex');
     const user = await db.collection('users').findOne({ email });

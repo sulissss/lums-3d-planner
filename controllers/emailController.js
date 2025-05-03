@@ -35,7 +35,6 @@ export async function processEmails(req, res) {
       res.status(500).json({ error: 'Invalid response format from email_filter.js. Expected an array.' });
     }
   } catch (error) {
-    console.error('Error processing emails:', error.message);
     res.status(500).json({ error: `Failed to process emails: ${error.message}` });
   }
 };

@@ -80,7 +80,6 @@ export default async function processEmail(emailContent) {
         return validEvents;
         
     } catch (error) {
-        console.error("Error parsing JSON response:", response.text, error);
-        return null; // Or handle the error as needed
+        return null;
     }
 }
